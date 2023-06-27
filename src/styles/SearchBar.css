@@ -1,0 +1,9 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.search-container input {
+    padding: 10px;
+}

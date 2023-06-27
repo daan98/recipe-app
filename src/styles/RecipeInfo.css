@@ -1,0 +1,42 @@
+.recipe-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #00C5FF;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #74FF00;
+    padding: 20px 15px;
+    width: 33%;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    text-align: initial;
+}
+
+button {
+    width: fit-content;
+    align-self: center;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span {
+    color: #B90000;
+}
+
+.image-container {
+    width: 100%;
+}
+
+img {
+    border-radius: 50%;
+    max-width: 200px;
+}
