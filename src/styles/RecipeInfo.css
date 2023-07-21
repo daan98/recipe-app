@@ -40,3 +40,10 @@ img {
     border-radius: 50%;
     max-width: 200px;
 }
+
+@media (max-width: 768px) {
+    .recipe-info-container {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/RecipeInfo.css";
-import Swal from "sweetalert2";
 import Modal from "./Modal";
 import IngredientsList from "./IngredientList";
 

@@ -107,6 +107,12 @@ h2 {
   max-height: 220px;
 }
 
+@media (max-width: 768px) {
+  .recipes-container {
+    flex-direction: column;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
