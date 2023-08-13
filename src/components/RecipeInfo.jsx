@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import "../styles/RecipeInfo.css";
-import Modal from "./Modal";
-import IngredientsList from "./IngredientList";
+import React, { useEffect, useState} from "react";
 
-const RecipeInfo = ({ recipeInfo }) => {
+import { IngredientsList, Modal } from "./";
+import "../styles/RecipeInfo.css";
+
+const RecipeInfo = ({ recipeInfo, saveDeleteRecipe }) => {
     const { label, calories, image, ingredientLines } = recipeInfo.recipe;
-    const [isShowModal, setIsShowModal] = useState(false);
+    
+    const [isShowModal, setIsShowModal]     = useState(false);
+    const [isRecipeSaved, setIsRecipeSaved] = useState(false);
     
     const handleShowMore = (state) => {
         setIsShowModal(state);
@@ -16,20 +18,53 @@ const RecipeInfo = ({ recipeInfo }) => {
             document.body.classList.remove('active-modal');
         }
     };
+
+    useEffect(() => {
+        const favorites   = JSON.parse(localStorage.getItem('favorites')) ?? [];
+        const recipeSaved = favorites.some(favorites => favorites?.id === label);
+
+        if (recipeSaved) {
+            setIsRecipeSaved(true);
+        }
+    }, []);
     
     return(
-        <div className="recipe-info-container">
+        <>
             <h1>{label}</h1>
-            <ul>
+            <ul className="ingredient-list-container">
                 {ingredientLines.map((ingredient, index) => index < 4 ? (
-                    <li key={index}>{ ingredient } - { index }</li>
+                    <li key={index}>{ ingredient }</li>
                 ) : null)}
             </ul>
-            { ingredientLines.length > 4 ?
-                <button type="button" onClick={() => handleShowMore(true)}>Show more</button>
-            :
-            null
-            }
+            
+            <div className="buttons-container">
+                { ingredientLines.length > 4 ?
+                    <button type="button" onClick={() => handleShowMore(true)}>Show more</button>
+                :
+                null
+                }
+                <button
+                    type="button"
+                    onClick={() => {
+                        saveDeleteRecipe(
+                            {
+                                isSave: !isRecipeSaved,
+                                recipe: {
+                                    id: label,
+                                    label,
+                                    calories,
+                                    image,
+                                    ingredientLines
+                                }
+                            }
+                        );
+                        setIsRecipeSaved(!isRecipeSaved);
+                    }}
+                >
+                    {!isRecipeSaved ? 'Guardar en Favorito' : 'Eliminar de Favorito'}
+                </button>
+            </div>
+
             <p>calories: <span>{ calories.toFixed(2) }</span></p>
 
             <div className="image-container">
@@ -48,7 +83,7 @@ const RecipeInfo = ({ recipeInfo }) => {
                             }
                 />
             )}
-        </div>
+        </>
     );
 };
 

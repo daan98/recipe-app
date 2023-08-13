@@ -14,13 +14,21 @@ h1 {
     margin: 0;
 }
 
-ul {
+.ingredient-list-container {
     text-align: initial;
+    display: inline-block;
+    padding: 10px 0;
 }
 
 button {
     width: fit-content;
     align-self: center;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 p {
@@ -45,5 +53,10 @@ img {
     .recipe-info-container {
         width: 90%;
         margin: 0 auto;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 10px;
     }
 }

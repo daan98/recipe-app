@@ -3,7 +3,7 @@ import React from "react";
 const IngredientsList = ({ ingredients }) => {
     return(
         <div className="list-container">
-            <ul>
+            <ul style={{flexDirection: "column"}}>
                 {ingredients.map((ingredient, index) => (
                     <li key={index}>{ ingredient }</li>
                 ))}
