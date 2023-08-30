@@ -37,3 +37,9 @@ li:hover a {
     transition: all ease-in-out 0.3s;
 
 }
+
+@media (min-width: 280px) and (max-width: 767px) {
+    header {
+        margin-bottom: 30px;
+    }
+}

@@ -61,7 +61,7 @@ const RecipeInfo = ({ recipeInfo, saveDeleteRecipe }) => {
                         setIsRecipeSaved(!isRecipeSaved);
                     }}
                 >
-                    {!isRecipeSaved ? 'Guardar en Favorito' : 'Eliminar de Favorito'}
+                    {!isRecipeSaved ? 'Add to Favorite' : 'Delete from Favorite'}
                 </button>
             </div>
 
